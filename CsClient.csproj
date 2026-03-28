@@ -19,6 +19,7 @@
     <Protobuf Include="./google/*/*.proto" GrpcServices="Client" />
     <Protobuf Include="./grpc/tradeapi/v1/*.proto" GrpcServices="Client" />
     <Protobuf Include="./grpc/tradeapi/v1/*/*.proto" GrpcServices="Client" />
+    <Protobuf Include="./grpc/gateway/protoc_gen_openapiv2/options/*.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>

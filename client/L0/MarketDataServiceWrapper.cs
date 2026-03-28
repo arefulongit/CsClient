@@ -128,6 +128,22 @@ public class MarketDataServiceWrapper {
         };
     }
 
+    [Obsolete("Экспериментальный метод. Не использовать")]
+    public static IAsyncEnumerable<SubscribeOrderBookResponse> SubscribeOrderBook1(
+        GrpcChannel channel,
+        Metadata headers,
+        string symbol
+        ) {
+        return new MarketDataService.MarketDataServiceClient(channel).SubscribeOrderBook(
+            new SubscribeOrderBookRequest {
+                Symbol = symbol
+            },
+            headers
+        ) switch {
+            var response => response.ResponseStream.ReadAllAsync()
+        };
+    }
+
     public static async Task<IAsyncStreamReader<SubscribeQuoteResponse>> SubscribeQuote(
         GrpcChannel channel,
         Metadata headers,
@@ -135,7 +151,6 @@ public class MarketDataServiceWrapper {
         ) {
         return new MarketDataService.MarketDataServiceClient(channel).SubscribeQuote(
             new SubscribeQuoteRequest {
-                
             },
             headers
         ) switch {
