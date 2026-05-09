@@ -13,6 +13,16 @@ namespace CsClient;
 
 public class MarketDataServiceWrapper {
 
+    /// <summary>
+    /// Получение свечей по инструменту <br />
+    /// Запрос-Ответ
+    /// </summary>
+    /// <param name="channel"></param>
+    /// <param name="headers"></param>
+    /// <param name="symbol"></param>
+    /// <param name="interval"></param>
+    /// <param name="timeFrame"></param>
+    /// <returns></returns>
     public static async Task<List<Bar>> BarsAsync (
         GrpcChannel channel, 
         Metadata headers, 
@@ -81,6 +91,15 @@ public class MarketDataServiceWrapper {
     }
 
 
+    /// <summary>
+    /// Получение свечей по инструменту <br />
+    /// Запрос/Поток ответов
+    /// </summary>
+    /// <param name="channel"></param>
+    /// <param name="headers"></param>
+    /// <param name="symbol"></param>
+    /// <param name="timeFrame"></param>
+    /// <returns></returns>
     public static async Task<IAsyncStreamReader<SubscribeBarsResponse>> SubscribeBars(
         GrpcChannel channel,
         Metadata headers,
